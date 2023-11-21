@@ -1,0 +1,33 @@
+{
+  "name": "ee-static-build-template",
+  "version": "0.0.0",
+  "description": "",
+  "main": "",
+  "etherealEngine": {
+    "version": "1.3.0"
+  },
+  "scripts": {
+    "test": "mocha --config .mocharc.js",
+    "dev": "cross-env APP_ENV=development NODE_OPTIONS=--max_old_space_size=20480 vite",
+    "build": "cross-env NODE_OPTIONS=--max_old_space_size=10240 vite build",
+    "format": "prettier --write \"**/*.{ts,tsx}\"",
+    "format-scss": "stylelint \"**/*.scss\" --fix",
+    "format-staged": "lint-staged",
+    "precommit": "no-master-commits -b master"
+  },
+  "peerDependencies": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "license": "ISC",
+  "pre-commit": [
+    "format-staged"
+  ],
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write"
+    ],
+    "*.scss": [
+      "stylelint --fix"
+    ]
+  }
+}
